@@ -7,11 +7,9 @@ import api from "../../service/api";
 import {
   Title,
   Form,
-  Div,
-  Subtitle,
+  RowForm,
   Input,
   Select,
-  Options,
   Button,
 } from "./styles";
 
@@ -84,27 +82,25 @@ const Login = () => {
 
   return (
     <>
-      <Title>Sistema de Segurança Digital</Title>
-
-      <Div>
+      <RowForm>
         <Form
           onSubmit={(event) => {
             event.preventDefault();
             signIn();
           }}
         >
-          <Subtitle>Login</Subtitle>
+          <Title>Sistema de Segurança Digital</Title>
           <Input placeholder="Usuário" onChange={handleInputChange} />
           <Select onChange={handleSelectChange}>
             {options.map((option) => (
-              <Options key={option.value} value={option.value}>
+              <option key={option.value} value={option.value}>
                 {option.label}
-              </Options>
+              </option>
             ))}
           </Select>
           <Button>ACESSAR</Button>
         </Form>
-      </Div>
+      </RowForm>
     </>
   );
 };

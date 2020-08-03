@@ -11,5 +11,14 @@ body {
 
 #root {
   background: url("assets/background-login.svg") no-repeat fixed;
-  background-size: contain;
+  background-size: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1024px) {
+  #root {
+    background-size: contain;
+  }
 }

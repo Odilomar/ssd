@@ -1,74 +1,30 @@
 import styled from "styled-components";
 
-// For Desktop
-// @media screen and (min-width: 1024px)
-
-// For Tablet
-// @media screen and (min-width: 768px) and (max-width: 1023px)
-
-// For Mobile
-// @media screen and (max-width: 767px)
-
 export const Title = styled.h1`
   font-family: "Montserrat", sans-serif;
   line-height: 3, 6875rem;
   font-weight: 300;
+  font-size: 3rem;
 
-  @media screen and (min-width: 768px) {
-    font-size: 3rem;
-  }
-
-  @media screen and (max-width: 767px) {
-    font-size: 2rem;
-    text-align: center;
-  }
+  position: absolute;
+  top: 3rem;
+  right: 15rem;
 `;
 
-export const RowForm = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+export const Div = styled.div`
+  position: absolute;
+  top: 35.79%;
+  right: 15rem;
 
-  height: 100%;
+  max-width: 44rem;
   width: 100%;
-
-  @media screen and (min-width: 1024px) {
-    justify-content: flex-end;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1023px) {
-    justify-content: center;
-  }
-
-  @media screen and (max-width: 767px) {
-    justify-content: center;
-  }
 `;
 
 export const Form = styled.form`
+  width: 50%;
+  margin-left: 25%;
+
   text-align: center;
-
-  @media screen and (min-width: 1440px) {
-    margin-right: 10rem;
-    width: 45rem;
-  }
-
-  @media screen and (min-width: 1101px)  and (max-width: 1439px){
-    margin-right: 10rem;
-    width: 32rem;
-  }
-
-  @media screen and (min-width: 1024px) and (max-width: 1100px){
-    margin-right: 2rem;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1100px) {
-    width: 36rem;
-  }
-
-  @media screen and (max-width: 767px) {
-    width: 18rem;
-  }
 `;
 
 export const Subtitle = styled.h2`
