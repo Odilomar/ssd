@@ -7,6 +7,14 @@ import List from "../../components/List";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
+import {
+  DivTitleDashboard,
+  ButtonSignOut,
+  LabelSignOut,
+  TitleDashboard,
+  RowTitleDashboard,
+  ContainerDashboard,
+} from "./styles";
 
 const defaultEditSystem = 0;
 
@@ -26,7 +34,7 @@ const Dashboard = () => {
 
     const idSystemTemp = 0;
     setIdSystem(idSystemTemp);
-  }, []);
+  }, [history]);
 
   const handleSignOut = () => {
     window.localStorage.removeItem("token");
@@ -34,30 +42,21 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row mt-4">
-        <div className="col">
-          <h1>Dashboard</h1>
-        </div>
-        <div className="col-2 d-flex align-content-center flex-wrap">
-          <button
-            type="button"
-            className="btn btn-primary ml-auto"
-            onClick={handleSignOut}
-          >
+    <ContainerDashboard>
+      <RowTitleDashboard>
+        <DivTitleDashboard>
+          <TitleDashboard>Sistema de Segurança Digital</TitleDashboard>
+          <ButtonSignOut type="button">
             <FontAwesomeIcon icon={faSignOutAlt} />
-            <span className="ml-2">Sair</span>
-          </button>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col align-self-center">
-          <EditSystemContext.Provider value={{ idSystem, setIdSystem }}>
-            {showList ? <List /> : <CreateEdit />}
-          </EditSystemContext.Provider>
-        </div>
-      </div>
-    </div>
+            <LabelSignOut>Sair</LabelSignOut>
+          </ButtonSignOut>
+        </DivTitleDashboard>
+      </RowTitleDashboard>
+
+      <EditSystemContext.Provider value={{ idSystem, setIdSystem }}>
+        {showList ? <List /> : <CreateEdit />}
+      </EditSystemContext.Provider>
+    </ContainerDashboard>
   );
 };
 
