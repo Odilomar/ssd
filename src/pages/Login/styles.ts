@@ -53,12 +53,12 @@ export const Form = styled.form`
     width: 45rem;
   }
 
-  @media screen and (min-width: 1101px)  and (max-width: 1439px){
+  @media screen and (min-width: 1101px) and (max-width: 1439px) {
     margin-right: 10rem;
     width: 32rem;
   }
 
-  @media screen and (min-width: 1024px) and (max-width: 1100px){
+  @media screen and (min-width: 1024px) and (max-width: 1100px) {
     margin-right: 2rem;
   }
 
@@ -83,9 +83,7 @@ export const Input = styled.input.attrs((props) => ({
   type: "text",
 }))`
   background: #ffffff;
-  display: block;
-  padding: 0.5rem 0 0.5rem 1rem;
-  margin-top: 1rem;
+  padding: 0.5rem 0 0.5rem 2.5rem;
 
   border: 1px solid #828282;
   box-sizing: border-box;
@@ -101,8 +99,7 @@ export const Input = styled.input.attrs((props) => ({
 export const Select = styled.select`
   background: #ffffff;
   display: block;
-  padding: 0.5rem 0 0.5rem 1rem;
-  margin-top: 1rem;
+  padding: 0.5rem 0 0.5rem 2.5rem;
 
   border: 1px solid #828282;
   box-sizing: border-box;
@@ -134,4 +131,16 @@ export const Button = styled.button`
   width: 50%;
   margin-top: 1rem;
   padding: 0.75rem;
+`;
+
+export const DivIcon = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin-top: 1rem;
+`;
+
+export const SpanIcon = styled.span`
+  position: absolute;
+  margin-left: 1rem;
 `;

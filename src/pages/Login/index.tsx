@@ -11,7 +11,16 @@ import {
   Input,
   Select,
   Button,
+  DivIcon,
+  SpanIcon,
 } from "./styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faUserSecret,
+  faUserNinja,
+  faUserTie,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface User {
   name: string;
@@ -90,14 +99,32 @@ const Login = () => {
           }}
         >
           <Title>Sistema de Segurança Digital</Title>
-          <Input placeholder="Usuário" onChange={handleInputChange} />
-          <Select onChange={handleSelectChange}>
-            {options.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </Select>
+          <DivIcon>
+            <SpanIcon>
+              <FontAwesomeIcon icon={faUser} />
+            </SpanIcon>
+            <Input placeholder="Usuário" onChange={handleInputChange} />
+          </DivIcon>
+          <DivIcon>
+            <SpanIcon>
+              <FontAwesomeIcon
+                icon={
+                  user.role === "admin"
+                    ? faUserSecret
+                    : user.role === "tecnico"
+                    ? faUserNinja
+                    : faUserTie
+                }
+              />
+            </SpanIcon>
+            <Select onChange={handleSelectChange}>
+              {options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </Select>
+          </DivIcon>
           <Button>ACESSAR</Button>
         </Form>
       </RowForm>
