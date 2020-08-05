@@ -8,12 +8,33 @@ import SystemsResponse from "../../interface/SystemsResponse.interface";
 import { EditSystemContext } from "../../context/EditSystemContext";
 import { ShowListContext } from "../../context/ShowListContext";
 import api from "../../service/api";
+import {
+  Row,
+  Col,
+  LabelStatTitle,
+  LabelInactive,
+  LabelActive,
+  LabelRegistered,
+} from "./styles";
 
 const useShowList = () => useContext(ShowListContext);
 const useIdSystem = () => useContext(EditSystemContext);
 
+interface SystemStatistics {
+  registered: number;
+  active: number;
+  inactive: number;
+}
+
+const defaultStat: SystemStatistics = {
+  registered: 0,
+  active: 0,
+  inactive: 0,
+};
+
 const List = () => {
   const [systems, setSystems] = useState<Systems[]>([]);
+  const [stat, SetStat] = useState<SystemStatistics>(defaultStat);
 
   const { setShowList } = useShowList()!;
   const { setIdSystem } = useIdSystem()!;
@@ -26,7 +47,7 @@ const List = () => {
     const token: string = window.localStorage.getItem("token") || "";
 
     return token;
-  }
+  };
 
   const handleDataFromAPI = async () => {
     const token = handleGetToken();
@@ -49,6 +70,7 @@ const List = () => {
     }
 
     const systemsTemp = [...systems];
+    let statTemp = defaultStat;
 
     (systemsResponse.data as SystemsResponse[]).map(
       ({ id, descricao, sigla, email, url, status }: SystemsResponse) => {
@@ -60,9 +82,14 @@ const List = () => {
           url,
           status,
         });
+        
+        statTemp = status ? {...statTemp, active: statTemp.active + 1} : {...statTemp, inactive: statTemp.inactive + 1};
       }
     );
 
+    statTemp.registered = systemsTemp.length;
+
+    SetStat(statTemp);
     setSystems(systemsTemp);
   };
 
@@ -105,6 +132,23 @@ const List = () => {
 
   return (
     <>
+      <Row>
+        <Col>
+          <LabelRegistered>{stat.registered}</LabelRegistered>
+          <LabelStatTitle>CADASTRADOS</LabelStatTitle>
+        </Col>
+
+        <Col>
+          <LabelActive>{stat.active}</LabelActive>
+          <LabelStatTitle>ATIVOS</LabelStatTitle>
+        </Col>
+
+        <Col>
+          <LabelInactive>{stat.inactive}</LabelInactive>
+          <LabelStatTitle>INATIVOS</LabelStatTitle>
+        </Col>
+      </Row>
+
       <div className="row mt-4">
         <div className="col-9">
           <h1>Listagem de itens</h1>

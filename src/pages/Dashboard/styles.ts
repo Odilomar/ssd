@@ -58,9 +58,11 @@ export const ButtonSignOut = styled.button`
 
   background: linear-gradient(
     90deg,
-    #f2994a -2.86%,
-    #f54c8b 52.73%,
-    #9b51e0 108.33%
+    #f54c8b 0%,
+    #f54c8b 0.01%,
+    #c34fba 55.21%,
+    #c34fba 55.22%,
+    #9b51e0 100%
   );
 
   border-radius: 8px;

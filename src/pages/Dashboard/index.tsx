@@ -46,7 +46,7 @@ const Dashboard = () => {
       <RowTitleDashboard>
         <DivTitleDashboard>
           <TitleDashboard>Sistema de Segurança Digital</TitleDashboard>
-          <ButtonSignOut type="button">
+          <ButtonSignOut type="button" onClick={handleSignOut}>
             <FontAwesomeIcon icon={faSignOutAlt} />
             <LabelSignOut>Sair</LabelSignOut>
           </ButtonSignOut>
